@@ -21,6 +21,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
     />
+    <link rel="stylesheet" href="./js/modal.js" />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
@@ -134,14 +135,17 @@
         <div class="container">
           <h2 class="about-title">Чим ми займаємося</h2>
           <ul class="about-list list">
-            <li class="about-item">
-              <img
-                class="work-img"
-                src="./images/img-1.jpg"
-                alt="Пише код"
-                width="370"
-              />
-            </li>
+            <div class="about-thumb">
+              <li class="about-item">
+                <img
+                  class="work-img"
+                  src="./images/img-1.jpg"
+                  alt="Пише код"
+                  width="370"
+                />
+              </li>
+              <p class="about-text">Десктопні додатки</p>
+            </div>
             <li class="about-item">
               <img
                 class="work-img"
@@ -469,5 +473,6 @@
         </div>
       </div>
     </footer>
+    <script src="./js/modal.js"></script>
   </body>
 </html>
