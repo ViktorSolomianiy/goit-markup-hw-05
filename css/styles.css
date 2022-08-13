@@ -143,17 +143,18 @@ img {
   left: 0;
   bottom: 0;
   border-radius: 2px;
-  transition-property: background-color, transform, opacity;
-  transition-duration: 250ms;
   transform: scaleX(0);
   opacity: 0;
-  transition: transform 250ms var(--cubic), opacity 250ms var(--cubic);
+  transition: transform 250ms var(--cubic), opacity 250ms var(--cubic),
+    background-color 250ms var(--cubic);
 }
 
 .header-link:hover::after {
   background-color: var(--btn-color);
   transform: scaleX(1);
   opacity: 1;
+  transition: transform 250ms var(--cubic), opacity 250ms var(--cubic),
+    background-color 250ms var(--cubic);
 }
 
 .underline {
@@ -254,12 +255,59 @@ img {
   background-color: var(--btn-color);
 }
 
-/* .backdrop {
+.backdrop {
   position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.2); */
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 250ms var(--cubic), visibility 250ms var(--cubic);
+}
+
+.modal {
+  position: absolute;
+  width: 528px;
+  height: 581px;
+  background-color: #fff;
+  border-radius: 4px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms var(--cubic);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.modal-icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-close {
+  position: absolute;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  top: 8px;
+  right: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 /* <!--Soft Skills--> */
@@ -339,6 +387,7 @@ img {
 
 .about-text {
   position: absolute;
+  padding: 27px;
   font-weight: 700;
   font-size: 14px;
   line-height: 1.14;
@@ -347,7 +396,8 @@ img {
   text-transform: uppercase;
   color: #ffffff;
   bottom: 0;
-  width: 100%;
+  width: 370px;
+  background-color: rgba(47, 48, 58, 0.8);
 }
 
 .about-thumb {
@@ -370,6 +420,8 @@ img {
   width: 270px;
   margin-right: 30px;
   background-color: #ffffff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .team-item:last-child {
@@ -424,6 +476,8 @@ img {
   height: 44px;
   border-radius: 50%;
   fill: var(--icon-color);
+  transition-property: fill, background-color;
+  transition-duration: 250ms;
 }
 
 .team-soc-link:hover,
@@ -433,8 +487,6 @@ img {
 }
 
 .team-box {
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 /* <!-- Clients --> */
@@ -463,6 +515,8 @@ img {
   border: 1px solid #afb1b8;
   border-radius: 4px;
   fill: var(--icon-color);
+  transition-property: fill, border-color;
+  transition-duration: 250ms;
 }
 
 .clients-link:hover,
@@ -509,6 +563,8 @@ img {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.6);
+  transition-property: color;
+  transition-duration: 250ms;
 }
 
 .footer-link-mail:hover,
@@ -526,7 +582,7 @@ img {
   margin-bottom: 20px;
   font-weight: 700;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 1.14;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #ffffff;
@@ -546,6 +602,8 @@ img {
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
   fill: #fff;
+  transition-property: background-color;
+  transition-duration: 250ms;
 }
 
 .footer-link-icon:hover,
@@ -565,6 +623,8 @@ img {
   margin-right: 30px;
   margin-bottom: 30px;
   background-color: #ffffff;
+  transition-property: box-shadow;
+  transition-duration: 250ms;
 }
 
 .gallery-item:hover,
@@ -573,12 +633,41 @@ img {
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
+.gallery-item:hover .gallery-up-text,
+.gallery-item:focus .gallery-up-text {
+  transform: translateY(0);
+}
+
 .gallery-item:nth-child(3n) {
   margin-right: 0;
 }
 
 .gallery-item:nth-child(n + 7) {
   margin-bottom: 0;
+}
+
+.gallery-up-text {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 24px;
+  padding-right: 24px;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  background-color: rgba(33, 150, 243, 0.9);
+  top: 0;
+  height: 100%;
+  transform: translateY(100%);
+  transition: transform 250ms var(--cubic);
+  overflow: auto;
+}
+
+.gallery-up-wrap {
+  position: relative;
+  overflow: hidden;
 }
 
 .gallery-btn {
@@ -594,6 +683,7 @@ img {
   border: 0;
   color: var(--main-color);
   background-color: var(--btn-gallery-color);
+  transition-duration: 250ms;
 }
 
 .gallery-btn:hover,
