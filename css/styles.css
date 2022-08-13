@@ -147,7 +147,7 @@ img {
   transition-duration: 250ms;
   transform: scaleX(0);
   opacity: 0;
-  transition: transform 2500ms var(--cubic), opacity 250ms var(--cubic);
+  transition: transform 250ms var(--cubic), opacity 250ms var(--cubic);
 }
 
 .header-link:hover::after {
