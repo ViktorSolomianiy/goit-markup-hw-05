@@ -125,8 +125,7 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--main-color);
-  transition-property: color;
-  transition-duration: 250ms;
+  transition: color 250ms var(--cubic);
 }
 
 .header-link:hover,
@@ -186,8 +185,7 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--second-color);
-  transition-property: color;
-  transition-duration: 250ms;
+  transition: color 250ms var(--cubic);
 }
 
 .header-link-mail:hover,
@@ -253,6 +251,12 @@ img {
   color: #ffffff;
   cursor: pointer;
   background-color: var(--btn-color);
+  transform: scaleX(1);
+  transition: transform 250ms var(--cubic);
+}
+
+.hero-btn:hover {
+  transform: scale(1.02);
 }
 
 .backdrop {
@@ -476,8 +480,7 @@ img {
   height: 44px;
   border-radius: 50%;
   fill: var(--icon-color);
-  transition-property: fill, background-color;
-  transition-duration: 250ms;
+  transition: fill 250ms var(--cubic), background-color 250ms var(--cubic);
 }
 
 .team-soc-link:hover,
@@ -515,8 +518,7 @@ img {
   border: 1px solid #afb1b8;
   border-radius: 4px;
   fill: var(--icon-color);
-  transition-property: fill, border-color;
-  transition-duration: 250ms;
+  transition: fill 250ms var(--cubic), border-color 250ms var(--cubic);
 }
 
 .clients-link:hover,
@@ -563,8 +565,7 @@ img {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.6);
-  transition-property: color;
-  transition-duration: 250ms;
+  transition: color 250ms var(--cubic);
 }
 
 .footer-link-mail:hover,
@@ -602,8 +603,7 @@ img {
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
   fill: #fff;
-  transition-property: background-color;
-  transition-duration: 250ms;
+  transition: background-color 250ms var(--cubic);
 }
 
 .footer-link-icon:hover,
@@ -623,8 +623,7 @@ img {
   margin-right: 30px;
   margin-bottom: 30px;
   background-color: #ffffff;
-  transition-property: box-shadow;
-  transition-duration: 250ms;
+  transition: box-shadow 250ms var(--cubic);
 }
 
 .gallery-item:hover,
@@ -683,7 +682,8 @@ img {
   border: 0;
   color: var(--main-color);
   background-color: var(--btn-gallery-color);
-  transition-duration: 250ms;
+  transition: background-color 250ms var(--cubic), color 250ms var(--cubic),
+    box-shadow 250ms var(--cubic);
 }
 
 .gallery-btn:hover,
